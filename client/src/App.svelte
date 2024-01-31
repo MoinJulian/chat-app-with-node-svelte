@@ -18,6 +18,8 @@
     }
 </script>
 
+<h1>Svelte Chat App</h1>
+
 <form on:submit|preventDefault={handle_submission}>
     <input type="text" bind:value={txt}>
     <button>Send</button>
