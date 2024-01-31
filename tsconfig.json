@@ -3,7 +3,7 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "target": "es6",
-    "removeComments": true,
+    "removeComments": true
   },
-  "include": ["server.ts"]
+  "include": ["server.ts", "global.d.ts"]
 }

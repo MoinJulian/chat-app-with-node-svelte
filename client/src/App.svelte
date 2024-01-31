@@ -1,13 +1,13 @@
 <script lang="ts">
-    import { io } from "socket.io-client";
+  import { io, Socket } from "socket.io-client";
 
-    const socket = io();
+    const socket: Socket<server_to_client_events, client_to_server_events> = io();
 
     socket.on("message", (msg) => {
         console.log(msg);
     });
 
-    let txt: String;
+    let txt: string;
 
     function handle_submission() {
         socket.emit("message", {
