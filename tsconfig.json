@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "target": "es6",
+    "removeComments": true,
+  },
+  "include": ["server.ts"]
+}
