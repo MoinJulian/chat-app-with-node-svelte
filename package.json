@@ -5,6 +5,10 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "build": "npm run build:server && npm run build:client",
+    "dev": "concurrently \"npm:dev:client\" \"npm:dev:server\"",
+    "dev:client": "cd client && npm run build -- --watch",
+    "build:client": "cd client && npm run build",
     "dev:server": "concurrently \"npm:compile:server\" \"npm:nodemon\"",
     "compile:server": "tsc --watch",
     "nodemon": "nodemon server.js",
