@@ -20,6 +20,11 @@ const io = new Server<
 
 io.on("connection", (socket) => {
   console.log(socket.id);
+  socket.emit("message", {
+    text: "Hi from Server",
+    bot: true,
+  });
+
   socket.on("message", (msg) => {
     io.emit("message", msg);
   });

@@ -9,6 +9,10 @@ import { Server } from "socket.io";
 const io = new Server(server);
 io.on("connection", (socket) => {
     console.log(socket.id);
+    socket.emit("message", {
+        text: "Hi from Server",
+        bot: true,
+    });
     socket.on("message", (msg) => {
         io.emit("message", msg);
     });

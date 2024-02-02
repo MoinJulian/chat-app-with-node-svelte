@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { name } from "../stores";
+    import { name } from "@/stores";
     let name_input = "";
 
     function handle_login() {
