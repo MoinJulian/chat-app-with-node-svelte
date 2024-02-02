@@ -1,3 +1,8 @@
+type user = {
+  id: string;
+  name: string;
+}
+
 type user_message = {
   user_name: string;
   text: string;
@@ -18,6 +23,7 @@ type client_to_server_events = {
 
 type server_to_client_events = {
   message: (m: message) => void;
+  users: (x: user[]) => void;
 };
 
 type inter_server_events = {};

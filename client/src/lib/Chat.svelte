@@ -20,8 +20,12 @@
         messages = [...messages, msg]
     });
 
-    socket.on("disconnect", reload_page)
+    socket.on("users", (users) => {
+        console.table(users);
+    }); 
 
+
+    socket.on("disconnect", reload_page)
 
     function send_message() {
         socket.emit("message", {

@@ -18,9 +18,18 @@ const io = new Server<
   socket_data
 >(server);
 
+// list of users
+let users: user[] = [];
+
+// handle socket messages
 io.on("connection", (socket) => {
   socket.on("login", (name) => {
     socket.data.name = name;
+    users.push({
+      name: name,
+      id: socket.id,
+    });
+    io.emit("users", users);
     socket.emit("message", {
       text: `Welcome, ${name}`,
       bot: true,
@@ -31,14 +40,12 @@ io.on("connection", (socket) => {
     });
   });
 
-  socket.on("message", (msg) => {
-    io.emit("message", msg);
-  });
-
   socket.on("disconnect", () => {
+    users = users.filter((u) => u.id !== socket.id);
+    io.emit("users", users);
     io.emit("message", {
       text: `${socket.data.name} has left the chat!`,
       bot: true,
     });
-  })
+  });
 });
