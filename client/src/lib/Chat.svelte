@@ -1,21 +1,23 @@
 <script lang="ts">
-  import Messages from "@/lib/Messages.svelte";
   import SendForm from "@/lib/SendForm.svelte";
+  import { name } from "@/stores";
   import { io, Socket } from "socket.io-client";
+  import Messages from "./Messages.svelte";
 
   let my_message_text = "";
+  let messages: message[] = [];
 
     
     const socket: Socket<server_to_client_events, client_to_server_events> = io();
 
     socket.on("message", (msg) => {
-        console.log(msg);
+        messages = [...messages, msg]
     });
 
 
     function send_message() {
         socket.emit("message", {
-            user_name: "emil",
+            user_name: $name,
             text: my_message_text,
             bot: false,
         });
@@ -23,6 +25,6 @@
     }
 </script>
 
-<Messages />
+<Messages {messages}/>
 
 <SendForm {send_message} bind:my_message_text/>
