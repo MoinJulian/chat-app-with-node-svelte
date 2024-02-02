@@ -20,6 +20,7 @@ const io = new Server<
 
 io.on("connection", (socket) => {
   socket.on("login", (name) => {
+    socket.data.name = name;
     socket.emit("message", {
       text: `Welcome, ${name}`,
       bot: true,
@@ -33,4 +34,11 @@ io.on("connection", (socket) => {
   socket.on("message", (msg) => {
     io.emit("message", msg);
   });
+
+  socket.on("disconnect", () => {
+    io.emit("message", {
+      text: `${socket.data.name} has left the chat!`,
+      bot: true,
+    });
+  })
 });

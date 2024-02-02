@@ -22,4 +22,6 @@ type server_to_client_events = {
 
 type inter_server_events = {};
 
-type socket_data = {};
+type socket_data = {
+  name: string;
+};

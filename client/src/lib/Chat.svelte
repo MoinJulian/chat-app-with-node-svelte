@@ -1,6 +1,7 @@
 <script lang="ts">
   import SendForm from "@/lib/SendForm.svelte";
   import { name } from "@/stores";
+  import { reload_page } from "@/utils";
   import { io, Socket } from "socket.io-client";
   import { onMount } from "svelte";
   import Messages from "./Messages.svelte";
@@ -18,6 +19,8 @@
     socket.on("message", (msg) => {
         messages = [...messages, msg]
     });
+
+    socket.on("disconnect", reload_page)
 
 
     function send_message() {
