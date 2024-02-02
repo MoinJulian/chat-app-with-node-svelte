@@ -1,0 +1,14 @@
+<script lang="ts">
+    import { name } from "../stores";
+    let name_input = "";
+
+    function handle_login() {
+        $name = name_input;
+    }
+</script>
+
+<form on:submit|preventDefault={handle_login}>
+    <label for="name_input">Choose a name</label>
+    <input type="text" id="name_input" bind:value={name_input} required>
+    <button>Start the chat</button>
+</form>

@@ -1,26 +1,30 @@
 <script lang="ts">
-  import { io, Socket } from "socket.io-client";
+  import Chat from "./lib/Chat.svelte";
+  import Header from "./lib/Header.svelte";
+  import Login from "./lib/Login.svelte";
+  import { name } from "./stores";
 
-    const socket: Socket<server_to_client_events, client_to_server_events> = io();
+    // const socket: Socket<server_to_client_events, client_to_server_events> = io();
 
-    socket.on("message", (msg) => {
-        console.log(msg);
-    });
+    // socket.on("message", (msg) => {
+    //     console.log(msg);
+    // });
 
-    let txt: string;
+    // let txt: string;
 
-    function handle_submission() {
-        socket.emit("message", {
-            user_name: "emil",
-            text: txt,
-            bot: false,
-        });
-    }
+    // function handle_submission() {
+    //     socket.emit("message", {
+    //         user_name: "emil",
+    //         text: txt,
+    //         bot: false,
+    //     });
+    // }
 </script>
 
-<h1>Svelte Chat App</h1>
+<Header></Header>
 
-<form on:submit|preventDefault={handle_submission}>
-    <input type="text" bind:value={txt}>
-    <button>Send</button>
-</form>
+{#if $name}
+  <Chat></Chat>
+{:else}
+  <Login></Login>
+{/if}
