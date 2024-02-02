@@ -19,10 +19,15 @@ const io = new Server<
 >(server);
 
 io.on("connection", (socket) => {
-  console.log(socket.id);
-  socket.emit("message", {
-    text: "Hi from Server",
-    bot: true,
+  socket.on("login", (name) => {
+    socket.emit("message", {
+      text: `Welcome, ${name}`,
+      bot: true,
+    });
+    io.emit("message", {
+      text: `${name} has entered the chat!`,
+      bot: true,
+    });
   });
 
   socket.on("message", (msg) => {
