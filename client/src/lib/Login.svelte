@@ -14,3 +14,20 @@
         <button>Start the chat</button>
     </form>
 </section>
+
+<style lang="scss">
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        padding: 1rem;
+        @media (min-width: 420px) {
+            flex-direction: row;
+        }
+    }
+
+    label {
+        white-space: nowrap;
+    }
+</style>
