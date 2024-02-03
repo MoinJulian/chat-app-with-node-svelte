@@ -25,6 +25,9 @@ io.on("connection", (socket) => {
             bot: true,
         });
     });
+    socket.on("message", (message) => {
+        io.emit("message", message);
+    });
     socket.on("disconnect", () => {
         users = users.filter((u) => u.id !== socket.id);
         io.emit("users", users);

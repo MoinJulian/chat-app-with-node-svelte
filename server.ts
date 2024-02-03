@@ -21,23 +21,32 @@ const io = new Server<
 // list of users
 let users: user[] = [];
 
-// handle socket messages
+// handle socket events
 io.on("connection", (socket) => {
+  //handle login
   socket.on("login", (name) => {
     socket.data.name = name;
+
     users.push({
       name: name,
       id: socket.id,
     });
+
     io.emit("users", users);
     socket.emit("message", {
       text: `Welcome, ${name}`,
       bot: true,
     });
+
     io.emit("message", {
       text: `${name} has entered the chat!`,
       bot: true,
     });
+  });
+
+  // forward messages
+  socket.on("message", (message) => {
+    io.emit("message", message);
   });
 
   socket.on("disconnect", () => {
