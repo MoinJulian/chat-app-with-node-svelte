@@ -4,10 +4,14 @@
   import { reload_page } from "@/utils";
   import { io, Socket } from "socket.io-client";
   import { onMount } from "svelte";
+  import Menu from "./Menu.svelte";
   import Messages from "./Messages.svelte";
+  import Users from "./Users.svelte";
 
   let my_message_text = "";
   let messages: message[] = [];
+  let users: user[] = [];
+  let show_users = false;
 
     
     const socket: Socket<server_to_client_events, client_to_server_events> = io();
@@ -20,8 +24,8 @@
         messages = [...messages, msg]
     });
 
-    socket.on("users", (users) => {
-        console.table(users);
+    socket.on("users", (_users) => {
+        users = _users;
     }); 
 
 
@@ -37,6 +41,10 @@
     }
 </script>
 
-<Messages {messages}/>
-
-<SendForm {send_message} bind:my_message_text/>
+<Menu bind:show_users/>
+{#if show_users}
+    <Users {users}/>
+{:else}
+    <Messages {messages}/>
+    <SendForm {send_message} bind:my_message_text/>
+{/if}
