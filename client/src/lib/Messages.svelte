@@ -4,7 +4,7 @@
     export let messages: message[] = [];
 </script>
 
-<section>
+<section aria-label="messages">
     <ol>
         {#each messages as message}
              <Message {message} />

@@ -5,6 +5,10 @@
   import { name } from "@/stores";
 </script>
 
+<svelte:head>
+  <title>Svelte Chat App</title>
+</svelte:head>
+
 <Header></Header>
 
 {#if $name}

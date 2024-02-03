@@ -4,6 +4,6 @@
 </script>
 
 <form on:submit|preventDefault={send_message}>
-    <input type="text" bind:value={my_message_text} required>
+    <input aria-label="your message" type="text" bind:value={my_message_text} required>
     <button>Send message</button>
 </form>
