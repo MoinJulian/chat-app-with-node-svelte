@@ -11,3 +11,13 @@
         {/each}
     </ol>
 </section>
+
+<style>
+    ol {
+        list-style-type: none;
+    }
+
+    section{
+        padding: 0.5rem;
+    }
+</style>
