@@ -4,12 +4,18 @@
 
 <li class:bot={message.bot}>
     {#if "user_name" in message}
-         <span>{message.user_name}:</span>
+         <span class="user">{message.user_name}:</span>
     {/if}
     <span>{message.text}</span>
 </li>
 
 <style>
+    li {
+        margin-bottom: 0.5rem;
+    }
+    .user {
+        color: var(--dark-font-color);
+    }
     .bot {
         font-weight: bold;
     }
