@@ -16,13 +16,14 @@
 </section>
 
 <style lang="scss">
+    @use "../breakpoints" as *;
     form {
         display: flex;
         flex-direction: column;
         gap: 1rem;
         align-items: center;
         padding: 1rem;
-        @media (min-width: 420px) {
+        @media (min-width: $md) {
             flex-direction: row;
         }
     }
