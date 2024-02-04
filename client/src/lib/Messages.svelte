@@ -19,5 +19,6 @@
 
     section{
         padding: 0.5rem;
+        overflow-y: scroll;
     }
 </style>
