@@ -1,10 +1,10 @@
 <script lang="ts">
   import Message from "./Message.svelte";
-
+    export let messages_element: HTMLElement;
     export let messages: message[] = [];
 </script>
 
-<section aria-label="messages">
+<section aria-label="messages" bind:this={messages_element}>
     <ol>
         {#each messages as message}
              <Message {message} />
