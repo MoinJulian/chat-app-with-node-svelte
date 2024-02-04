@@ -11,3 +11,20 @@
     {/each}
   </ul>
 </section>
+
+<style>
+  section {
+    padding: 1rem;
+    overflow-y: auto;
+  }
+
+  ul {
+    padding-top: 1rem;
+    color: var(--dark-font-color);
+    list-style-type: none;
+  }
+
+  li {
+    margin-block: 0.5rem;
+  }
+</style>
