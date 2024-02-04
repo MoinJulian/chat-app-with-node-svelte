@@ -9,7 +9,7 @@
 </form>
 
 <style lang="scss">
-    @use "../breakpoints" as *;
+    @use "../scss/breakpoints" as *;
     form {
         display: flex;
         flex-direction: column;
